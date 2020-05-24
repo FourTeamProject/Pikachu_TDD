@@ -58,8 +58,12 @@ public class Product {
     }
 
     @Override
-    public String toString () {
-        return "prdCd : " + this.prdCd + ", prdPrc : " + this.prdPrc + ", giftNo : " + this.giftNo + ", stock : " + this.stock;
+    public String toString() {
+        return "Product{" +
+                "prdCd=" + prdCd +
+                ", prdPrc=" + prdPrc +
+                ", giftNo=" + giftNo +
+                ", stock=" + stock +
+                '}';
     }
-
 }
