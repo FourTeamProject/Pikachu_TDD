@@ -1,5 +1,7 @@
 package com.github.fourteam.pikachu.week1.bbubbush.domain;
 
+import com.github.fourteam.pikachu.week1.bbubbush.exception.RequiredValueException;
+
 public class Product {
     private final long prdCd;      // 상품코드
     private final long prdPrc;     // 상품가격
@@ -8,17 +10,23 @@ public class Product {
 
     public static class Builder {
         // 필수값
-        private final long productCode;
-        private final long productPrice;
+        private long productCode;
+        private long productPrice;
 
         // 기본값이 존재하는 옵션
         private long giftNo = 0;
         private int stock = 0;
 
-        public Builder (long productCode, long productPrice) {
-            this.productCode = productCode;
-            this.productPrice = productPrice;
+        public Builder () {
 
+        }
+        public Builder productCode(long productCode) {
+            this.productCode = productCode;
+            return this;
+        }
+        public Builder productPrice(long productPrice) {
+            this.productPrice = productPrice;
+            return this;
         }
         public Builder giftNo(long giftNo) {
             this.giftNo = giftNo;
@@ -30,6 +38,9 @@ public class Product {
         }
 
         public Product build() {
+            if ( this.productCode == 0L ) throw new RequiredValueException("상품코드는 필수값 입니다.");
+            if ( this.productPrice == 0L ) throw new RequiredValueException("상품가격은 필수값 입니다.");
+
             return new Product(this);
         }
     }

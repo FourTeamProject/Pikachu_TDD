@@ -9,7 +9,9 @@ public class ProductTest {
     @Test
     public void 기본객체_생성() {
         // given
-        Product product = new Product.Builder(10L, 120000L)
+        Product product = new Product.Builder()
+                .productCode(10L)
+                .productPrice(120000L)
                 .giftNo(100L)
                 .stock(100)
                 .build();

@@ -78,4 +78,15 @@ public class Customer {
                 ", blackConsumerFlg=" + blackConsumerFlg +
                 '}';
     }
+
+
+    public boolean checkCustomerStatus() {
+        if ( this.userType.equals(CustomerType.Employees) ) {
+            if ( this.point == 0L ) return false;
+        }
+        else if ( this.userType.equals(CustomerType.Normal) ) {
+            if ( this.isBlackConsumerFlg() ) return false;
+        }
+        return true;
+    }
 }
