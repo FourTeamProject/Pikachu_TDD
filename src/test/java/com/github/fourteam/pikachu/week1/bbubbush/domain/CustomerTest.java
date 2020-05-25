@@ -6,6 +6,10 @@ import com.github.fourteam.pikachu.week1.bbubbush.type.CustomerType;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.junit.Assert.*;
 
 public class CustomerTest {
@@ -64,14 +68,32 @@ public class CustomerTest {
         boolean[] canOrderStatus = new boolean[this.customers.length];
 
         // when
+
         for (int i = 0; i < this.customers.length; i++) {
             canOrderStatus[i] = this.customers[i].checkCustomerStatus();
         }
+
 
         // then
         assertFalse(canOrderStatus[0]);
         assertTrue(canOrderStatus[1]);
         assertTrue(canOrderStatus[2]);
         assertFalse(canOrderStatus[3]);
+
+
+    }
+    @Test
+    public void 주문가능상태_체크_컬렉션버전 () {
+        // given
+
+        // when
+        List<Customer> collect = Arrays.stream(this.customers)
+                .filter(Customer::checkCustomerStatus)
+                .collect(Collectors.toList());
+        // then
+        assertThat(collect.size(), is(equalTo(2)));
+        assertThat(collect.get(0).getUserName(), is(equalTo("hs")));
+        assertThat(collect.get(1).getUserName(), is(equalTo("jw")));
+
     }
 }
