@@ -77,4 +77,8 @@ public class Product {
                 ", stock=" + stock +
                 '}';
     }
+
+    public boolean checkProduct() {
+        return this.stock > 0;
+    }
 }

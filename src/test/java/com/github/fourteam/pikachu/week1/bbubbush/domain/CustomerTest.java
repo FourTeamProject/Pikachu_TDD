@@ -15,10 +15,6 @@ import static org.junit.Assert.*;
 public class CustomerTest {
     private Customer[] customers;
 
-    /*Customer customer = new Customer("dynee313", "dy", 0, 0, false);      // 임직원
-    Customer customer = new Customer("imesung", "hs", 0, 10000, false);   // 임직원
-    Customer customer = new Customer("mike6321", "jw", 1, 2000, false);   // 일반고객
-    Customer customer = new Customer("leetsh", "sh", 2, 0, true);      // 일반고객 블랙컨슈머*/
 
     @Before
     public void setUp() {
@@ -87,13 +83,13 @@ public class CustomerTest {
         // given
 
         // when
-        List<Customer> collect = Arrays.stream(this.customers)
+        List<Customer> checkStatus = Arrays.stream(this.customers)
                 .filter(Customer::checkCustomerStatus)
                 .collect(Collectors.toList());
         // then
-        assertThat(collect.size(), is(equalTo(2)));
-        assertThat(collect.get(0).getUserName(), is(equalTo("hs")));
-        assertThat(collect.get(1).getUserName(), is(equalTo("jw")));
+        assertThat(checkStatus.size(), is(equalTo(2)));
+        assertThat(checkStatus.get(0).getUserName(), is(equalTo("hs")));
+        assertThat(checkStatus.get(1).getUserName(), is(equalTo("jw")));
 
     }
 }

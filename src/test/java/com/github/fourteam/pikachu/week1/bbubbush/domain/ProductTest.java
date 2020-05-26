@@ -2,9 +2,40 @@ package com.github.fourteam.pikachu.week1.bbubbush.domain;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
+
+import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ProductTest {
+    private Product[] products;
+
+    @Before
+    public void setUp() {
+        products = new Product[3];
+
+        products[0] = new Product.Builder()
+                .productCode(111111L)
+                .productPrice(20000L)
+                .giftNo(12345L)
+                .stock(10)
+                .build();
+        products[1] = new Product.Builder()
+                .productCode(222222L)
+                .productPrice(10000L)
+                .giftNo(0L)
+                .stock(40)
+                .build();
+        products[2] = new Product.Builder()
+                .productCode(333333L)
+                .productPrice(10000L)
+                .giftNo(0L)
+                .stock(0)
+                .build();
+    }
 
     @Test
     public void 기본객체_생성() {
@@ -24,6 +55,34 @@ public class ProductTest {
         assertThat(product.getPrdPrc(), is(equalTo(120000L)));
         assertThat(product.getGiftNo(), is(equalTo(100L)));
         assertThat(product.getStock(), is(equalTo(100)));
+    }
 
+    @Test
+    public void 상품제고확인() {
+        // given
+        boolean[] canOrderStatus = new boolean[this.products.length];
+
+        // when
+        for (int i = 0; i < products.length; i++) {
+            canOrderStatus[i] = products[i].checkProduct();
+        }
+
+        // then
+        assertTrue(canOrderStatus[0]);
+        assertTrue(canOrderStatus[1]);
+        assertFalse(canOrderStatus[2]);
+    }
+
+    @Test
+    public void 상품제고확인_컬렉션() {
+        // given
+
+        // when
+        List<Product> checkStatus = Arrays.stream(this.products).filter(Product::checkProduct).collect(Collectors.toList());
+
+        // thentR
+        assertThat(checkStatus.size(), is(equalTo(2)));
+        assertThat(checkStatus.get(0).getPrdCd(), is(equalTo(111111L)));
+        assertThat(checkStatus.get(1).getPrdPrc(), is(equalTo(10000L)));
     }
 }
