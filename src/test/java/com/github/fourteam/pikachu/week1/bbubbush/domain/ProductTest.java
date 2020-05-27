@@ -20,19 +20,16 @@ public class ProductTest {
         products[0] = new Product.Builder()
                 .productCode(111111L)
                 .productPrice(20000L)
-                .giftNo(12345L)
                 .stock(10)
                 .build();
         products[1] = new Product.Builder()
                 .productCode(222222L)
                 .productPrice(10000L)
-                .giftNo(0L)
                 .stock(40)
                 .build();
         products[2] = new Product.Builder()
                 .productCode(333333L)
                 .productPrice(10000L)
-                .giftNo(0L)
                 .stock(0)
                 .build();
     }
@@ -43,7 +40,7 @@ public class ProductTest {
         Product product = new Product.Builder()
                 .productCode(10L)
                 .productPrice(120000L)
-                .giftNo(100L)
+                .gift(new GiftProduct.Builder(100L, 10).build())
                 .stock(100)
                 .build();
 
@@ -53,7 +50,7 @@ public class ProductTest {
         assertThat(product, is(notNullValue()));
         assertThat(product.getPrdCd(), is(equalTo(10L)));
         assertThat(product.getPrdPrc(), is(equalTo(120000L)));
-        assertThat(product.getGiftNo(), is(equalTo(100L)));
+        assertThat(product.getGift().getGiftCd(), is(equalTo(100L)));
         assertThat(product.getStock(), is(equalTo(100)));
     }
 
@@ -64,7 +61,7 @@ public class ProductTest {
 
         // when
         for (int i = 0; i < products.length; i++) {
-            canOrderStatus[i] = products[i].checkProduct();
+            canOrderStatus[i] = products[i].checkHasStock();
         }
 
         // then
@@ -78,9 +75,9 @@ public class ProductTest {
         // given
 
         // when
-        List<Product> checkStatus = Arrays.stream(this.products).filter(Product::checkProduct).collect(Collectors.toList());
+        List<Product> checkStatus = Arrays.stream(this.products).filter(Product::checkHasStock).collect(Collectors.toList());
 
-        // thentR
+        // thent
         assertThat(checkStatus.size(), is(equalTo(2)));
         assertThat(checkStatus.get(0).getPrdCd(), is(equalTo(111111L)));
         assertThat(checkStatus.get(1).getPrdPrc(), is(equalTo(10000L)));

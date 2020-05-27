@@ -2,10 +2,10 @@ package com.github.fourteam.pikachu.week1.bbubbush.domain;
 
 import com.github.fourteam.pikachu.week1.bbubbush.exception.RequiredValueException;
 
-public class Product {
+public class Product implements Products {
     private final long prdCd;      // 상품코드
     private final long prdPrc;     // 상품가격
-    private final long giftNo;     // 사은품 코드 - 0 일 경우 사은품 없음!
+    private final GiftProduct gift;     // 사은품 코드 - 0 일 경우 사은품 없음!
     private final int stock;       // 재고
 
     public static class Builder {
@@ -14,11 +14,10 @@ public class Product {
         private long productPrice;
 
         // 기본값이 존재하는 옵션
-        private long giftNo = 0;
+        private GiftProduct gift = new GiftProduct.Builder(0L, 0).build();
         private int stock = 0;
 
         public Builder () {
-
         }
         public Builder productCode(long productCode) {
             this.productCode = productCode;
@@ -28,8 +27,8 @@ public class Product {
             this.productPrice = productPrice;
             return this;
         }
-        public Builder giftNo(long giftNo) {
-            this.giftNo = giftNo;
+        public Builder gift(GiftProduct gift) {
+            this.gift = gift;
             return this;
         }
         public Builder stock(int stock) {
@@ -48,7 +47,7 @@ public class Product {
     private Product(Builder builder) {
         this.prdCd = builder.productCode;
         this.prdPrc = builder.productPrice;
-        this.giftNo = builder.giftNo;
+        this.gift = builder.gift;
         this.stock = builder.stock;
     }
 
@@ -60,25 +59,28 @@ public class Product {
         return prdPrc;
     }
 
-    public long getGiftNo() {
-        return giftNo;
+    public GiftProduct getGift() {
+        return gift;
     }
 
     public int getStock() {
         return stock;
     }
 
+
     @Override
     public String toString() {
         return "Product{" +
                 "prdCd=" + prdCd +
                 ", prdPrc=" + prdPrc +
-                ", giftNo=" + giftNo +
+                ", gift=" + gift +
                 ", stock=" + stock +
                 '}';
     }
 
-    public boolean checkProduct() {
+    // checkProduct()와 동일
+    @Override
+    public boolean checkHasStock() {
         return this.stock > 0;
     }
 }

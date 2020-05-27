@@ -1,5 +1,6 @@
 package com.github.fourteam.pikachu.week1.bbubbush.domain;
 
+import com.github.fourteam.pikachu.week1.bbubbush.exception.RequiredValueException;
 import com.github.fourteam.pikachu.week1.bbubbush.type.CustomerType;
 
 public class Customer {
@@ -36,6 +37,9 @@ public class Customer {
         }
 
         public Customer builder() {
+            if ( this.userId == null || this.userId.length() == 0 ) throw new RequiredValueException("고객 아이디는 필수값 입니다.");
+            if ( this.userName == null || this.userName.length() == 0 ) throw new RequiredValueException("이름은 필수값 입니다.");
+            if ( this.userType == null ) throw new RequiredValueException("고객유형은 필수값 입니다.");
             return new Customer(this);
         }
     }
