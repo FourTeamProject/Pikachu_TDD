@@ -93,4 +93,12 @@ public class Customer {
         }
         return true;
     }
+
+    public boolean canUsePoint(){
+        return this.point >= 3000L;
+    }
+
+    public void usePoint (long spendPoint) {
+        this.point -= spendPoint;
+    }
 }
