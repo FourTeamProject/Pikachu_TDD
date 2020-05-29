@@ -38,6 +38,15 @@ public class OrderSheet {
         return customer;
     }
 
+    /**
+     * Name: 결제 전, 주문 가능상태 확인
+     * Date: 2020/05/29
+     * Info:
+     *  고객, 상품, 사은품의 상태를 확인.
+     * KeyInfo:
+     *      Status :: 주문가능상태 (S: 가능, E: 불가)
+     *      Message :: 주문이 불가할 때, 원인을 담음
+     */
     public Map<String, String> orderSheetRequest () {
         HashMap<String, String> outputMap = new HashMap<>();
         outputMap.put("Status", "E");

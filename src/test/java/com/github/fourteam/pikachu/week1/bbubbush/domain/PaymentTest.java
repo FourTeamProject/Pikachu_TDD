@@ -87,8 +87,10 @@ public class PaymentTest {
 
     }
 
+    
     @Test
     public void 결제실패() {
+        
         final Stream<OrderSheet> streamCanNotOrder = Arrays.stream(this.orderSheets).filter((orderSheet) -> {
             return "E".equals(orderSheet.orderSheetRequest().get("Status"));
         });

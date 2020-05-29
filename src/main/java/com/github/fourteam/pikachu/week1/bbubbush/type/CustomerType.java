@@ -11,6 +11,13 @@ public enum CustomerType {
         this.customerTypeValue = customerTypeValue;
     }
 
+    /**
+     * Name: 고객유형을 정해진 값으로 전달
+     * Date: 2020/05/29
+     * Info:
+     *  임직원 - 0
+     *  일반고객 - 1
+     */
     public int getCustomerTypeValue() {
         return customerTypeValue;
     }

@@ -12,6 +12,12 @@ public enum PaymentType {
         this.paymentName = name;
     }
 
+    /**
+     * Name: 결제수단의 이름을 전달
+     * Date: 2020/05/29
+     * Info:
+     *  각 결제수단 별 한글 이름 전달
+     */
     public String getPaymentName() {
         return paymentName;
     }

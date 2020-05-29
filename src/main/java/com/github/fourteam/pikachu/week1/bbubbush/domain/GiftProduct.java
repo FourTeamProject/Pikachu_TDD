@@ -50,7 +50,13 @@ public class GiftProduct implements Products {
                 '}';
     }
 
-    // checkGift() 기능 구현
+    /**
+     * Name: 사은품의 재고를 확인
+     * Date: 2020/05/29
+     * Info:
+     *  사은품 재고가 없으면 false, 있으면 true
+     *  checkGift() 기능 구현
+     */
     @Override
     public boolean checkHasStock() {
         return this.stock > 0;

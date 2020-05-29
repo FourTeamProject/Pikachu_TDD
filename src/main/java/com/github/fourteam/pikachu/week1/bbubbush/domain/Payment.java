@@ -20,6 +20,12 @@ public class Payment {
         this.totalPayment = orderSheet.getProduct().getPrdPrc();
     }
 
+    /**
+     * Name: 결제하기
+     * Date: 2020/05/29
+     * Info:
+     *  고객이 포인트를 사용할 수 있으면, 먼저 사용하고 남은 금액을 결제수단을 통해 차감
+     */
     public void pay() {
         if ( this.orderSheet.getCustomer().canUsePoint() ) {
             final long point = this.orderSheet.getCustomer().getPoint();
@@ -37,6 +43,12 @@ public class Payment {
         System.out.println(this.toString());
     }
 
+    /**
+     * Name: 전체 주문금액과 고객의 포인트를 비교
+     * Date: 2020/05/29
+     * Info:
+     *  고객이 가진 포인트와 총 결제금액을 비교하여 총 결제금액이 포인트보다 크거나 같으면 true, 작으면 false 리턴
+     */
     private boolean totalPaymentMoreThanPoint(long point) {
         return this.totalPayment >= point;
     }

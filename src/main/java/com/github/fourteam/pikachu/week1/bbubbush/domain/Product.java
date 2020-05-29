@@ -78,7 +78,13 @@ public class Product implements Products {
                 '}';
     }
 
-    // checkProduct()와 동일
+    /**
+     * Name: 상품의 재고를 확인
+     * Date: 2020/05/29
+     * Info:
+     *  상품 재고가 없으면 false, 있으면 true
+     *  checkGift() 기능 구현
+     */
     @Override
     public boolean checkHasStock() {
         return this.stock > 0;

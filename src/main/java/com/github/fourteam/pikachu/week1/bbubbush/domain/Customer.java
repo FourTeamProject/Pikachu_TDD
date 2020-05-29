@@ -3,6 +3,11 @@ package com.github.fourteam.pikachu.week1.bbubbush.domain;
 import com.github.fourteam.pikachu.week1.bbubbush.exception.RequiredValueException;
 import com.github.fourteam.pikachu.week1.bbubbush.type.CustomerType;
 
+/**
+* Name: 회원 객체
+* Date: 2020/05/29
+* Info:
+*/
 public class Customer {
     private String userId;		        // ID
     private String userName;		    // name
@@ -82,8 +87,13 @@ public class Customer {
                 ", blackConsumerFlg=" + blackConsumerFlg +
                 '}';
     }
-
-
+    /**
+     * Name: 고객의 주문가능상태 확인
+     * Date: 2020/05/29
+     * Info:
+     *  직원 - 포인트가 없으면 주문불가
+     *  일반고객 - 블랙컨슈머이면 사용불가
+     */
     public boolean checkCustomerStatus() {
         if ( this.userType.equals(CustomerType.Employees) ) {
             if ( this.point == 0L ) return false;
@@ -94,11 +104,24 @@ public class Customer {
         return true;
     }
 
+    /**
+     * Name: 포인트를 사용할 수 있는지 확인
+     * Date: 2020/05/29
+     * Info:
+     *  3000점 이상 되어야 포인트 사용
+     */
     public boolean canUsePoint(){
         return this.point >= 3000L;
     }
 
+    /**
+     * Name: 포인트 사용하기
+     * Date: 2020/05/29
+     * Info:
+     *  고객이 가진 포인트를 사용
+     */
     public void usePoint (long spendPoint) {
         this.point -= spendPoint;
     }
+
 }
