@@ -22,6 +22,7 @@ public class ShopMain {
     private static final Logger LOGGER = Logger.getLogger(ShopMain.class);
     public static String sessionId;
 
+
     public static void main(String[] args) {
 
         String userId = "mike6321";
