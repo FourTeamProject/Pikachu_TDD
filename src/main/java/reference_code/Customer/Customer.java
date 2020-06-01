@@ -4,7 +4,7 @@ package reference_code.Customer;
 
 
 import reference_code.Login.LoginCheck;
-import reference_code.ShopMain;
+import reference_code.client.ShopMain;
 
 import java.util.HashMap;
 import java.util.Map;
