@@ -9,6 +9,7 @@ import com.github.fourteam.pikachu.week1.bbubbush.type.CustomerType;
 * Info:
 */
 public class Customer {
+
     private String userId;		        // ID
     private String userName;		    // name
     private CustomerType userType;			        // 0: 임직원, 1: 일반고객
