@@ -37,6 +37,7 @@ public class CustomerTest {
                     .builder();
     }
 
+
     @Test
     public void 기본객체_생성하기() {
         // given
