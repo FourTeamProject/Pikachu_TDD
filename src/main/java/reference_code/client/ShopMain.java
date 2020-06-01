@@ -1,4 +1,4 @@
-package reference_code;
+package reference_code.client;
 
 
 import org.apache.log4j.Logger;
