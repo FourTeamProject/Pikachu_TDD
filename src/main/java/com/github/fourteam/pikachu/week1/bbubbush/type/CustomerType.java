@@ -1,6 +1,7 @@
 package com.github.fourteam.pikachu.week1.bbubbush.type;
 
 public enum CustomerType {
+
     Employees(0)
     , Normal(1)
     ;
