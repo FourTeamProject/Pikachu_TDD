@@ -7,6 +7,7 @@ public class RequiredValueException extends RuntimeException {
         super(errorMsg);
     }
 
+
     public RequiredValueException (String errorMsg, Throwable throwable) {
         super(errorMsg, throwable);
     }
