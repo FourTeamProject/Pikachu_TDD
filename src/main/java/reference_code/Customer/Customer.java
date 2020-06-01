@@ -27,6 +27,9 @@ public class Customer {
         loginUser.put("imesung", new Customer("imesung", "hs", 0, 10000, false));
         loginUser.put("mike6321", new Customer("mike6321", "jw", 1, 2000, false));
         loginUser.put("leetsh", new Customer("leetsh", "sh", 2, 0, true));
+
+
+
     }
 
     private final String userId;
