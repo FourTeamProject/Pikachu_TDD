@@ -1,8 +1,6 @@
 package com.github.fourteam.pikachu.week1.bbubbush.domain;
 
 
-import com.github.fourteam.pikachu.week1.bbubbush.exception.RequiredValueException;
-
 public class GiftProduct implements Products {
     private final long giftCd;      // 사은품코드
     private final int stock;       // 재고
