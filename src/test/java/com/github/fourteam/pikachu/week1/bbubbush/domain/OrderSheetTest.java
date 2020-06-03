@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import java.util.Map;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 public class OrderSheetTest {
@@ -42,7 +42,7 @@ public class OrderSheetTest {
                 .build();
 
         // 고객정보
-        this.customers = new Customer[4];
+        this.customers = new Customer[5];
         this.customers[0] = new Customer.Builder("dynee313", "dy", CustomerType.Employees)
                 .hasPoint(0L)
                 .isBlackConsumer(false)
@@ -59,6 +59,10 @@ public class OrderSheetTest {
                 .hasPoint(0L)
                 .isBlackConsumer(true)
                 .builder();
+        this.customers[4] = new Customer.Builder("wonrack", "wr", CustomerType.CanNotOrder)
+                .hasPoint(3000L)
+                .isBlackConsumer(false)
+                .builder();
 
     }
 
@@ -73,21 +77,33 @@ public class OrderSheetTest {
     public void 주문서_진입가능여부_실패() {
         Product product = products[0];
         Customer customer = customers[0];
-        final OrderSheet orderSheet_fail = new OrderSheet.Builder(product, customer).build();
+        final OrderSheet orderSheetFail = new OrderSheet.Builder(product, customer).build();
 
-        Map<String, String> responseMap = orderSheet_fail.orderSheetRequest();
+        Map<String, String> responseMap = orderSheetFail.orderSheetRequest();
 
-        assertThat(responseMap.get("Status"), Is.is(equalTo("E")));
+        assertThat(responseMap.get("Status"), is(equalTo("E")));
     }
 
     @Test
     public void 주문서_진입가능여부_성공() {
         Product product = products[0];
         Customer customer = customers[2];
-        final OrderSheet orderSheet_fail = new OrderSheet.Builder(product, customer).build();
+        final OrderSheet orderSheetSuccess = new OrderSheet.Builder(product, customer).build();
 
-        Map<String, String> responseMap = orderSheet_fail.orderSheetRequest();
+        Map<String, String> responseMap = orderSheetSuccess.orderSheetRequest();
 
-        assertThat(responseMap.get("Status"), Is.is(equalTo("S")));
+        assertThat(responseMap.get("Status"), is(equalTo("S")));
+    }
+
+    @Test
+    public void 거래거절고객_진입가능여부 () {
+        final Product product = this.products[0];
+        final Customer canNotOrder = this.customers[4];
+        final OrderSheet orderSheet = new OrderSheet.Builder(product, canNotOrder).build();
+
+        final Map<String, String> responseMap = orderSheet.orderSheetRequest();
+
+        assertThat(responseMap.get("Status"), is(equalTo("E")));
+        assertThat(responseMap.get("Message"), is(containsString("거래거절")));
     }
 }

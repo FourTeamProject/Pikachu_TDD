@@ -18,7 +18,7 @@ public class CustomerTest {
 
     @Before
     public void setUp() {
-        this.customers = new Customer[4];
+        this.customers = new Customer[5];
         this.customers[0] = new Customer.Builder("dynee313", "dy", CustomerType.Employees)
                     .hasPoint(0L)
                     .isBlackConsumer(false)
@@ -35,6 +35,10 @@ public class CustomerTest {
                     .hasPoint(0L)
                     .isBlackConsumer(true)
                     .builder();
+        this.customers[4] = new Customer.Builder("wonrack", "wr", CustomerType.CanNotOrder)
+                .hasPoint(3000L)
+                .isBlackConsumer(false)
+                .builder();
     }
 
 
@@ -92,5 +96,15 @@ public class CustomerTest {
         assertThat(checkStatus.get(0).getUserName(), is(equalTo("hs")));
         assertThat(checkStatus.get(1).getUserName(), is(equalTo("jw")));
 
+    }
+
+    @Test
+    public void 거래거절고객_주문가능상태_체크 () {
+        // given
+        final Customer canNotOrder = this.customers[4];
+        // when
+        final boolean hisCanOrder = canNotOrder.checkCustomerStatus();
+        // then
+        assertFalse(hisCanOrder);
     }
 }

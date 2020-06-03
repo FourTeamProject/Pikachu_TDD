@@ -4,6 +4,7 @@ public enum CustomerType {
 
     Employees(0)
     , Normal(1)
+    , CanNotOrder(2)
     ;
 
     private int customerTypeValue;
@@ -18,6 +19,7 @@ public enum CustomerType {
      * Info:
      *  임직원 - 0
      *  일반고객 - 1
+     *  거래거절고객 - 2
      */
     public int getCustomerTypeValue() {
         return customerTypeValue;
