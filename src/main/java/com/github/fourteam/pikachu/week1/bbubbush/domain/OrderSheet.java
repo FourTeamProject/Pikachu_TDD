@@ -60,6 +60,9 @@ public class OrderSheet {
             else if ( customer.getUserType().equals(CustomerType.Normal) ) {
                 outputMap.put("Message", "블랙컨슈머는 주문할 수 없습니다.");
             }
+            else if ( customer.getUserType().equals(CustomerType.CanNotOrder) ) {
+                outputMap.put("Message", "거래거절 고객입니다.");
+            }
             return outputMap;
         }
 

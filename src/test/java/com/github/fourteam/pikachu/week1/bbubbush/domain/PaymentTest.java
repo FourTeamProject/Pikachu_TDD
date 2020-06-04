@@ -44,7 +44,7 @@ public class PaymentTest {
                 .build();
 
         // 고객정보
-        this.customers = new Customer[4];
+        this.customers = new Customer[5];
         this.customers[0] = new Customer.Builder("dynee313", "dy", CustomerType.Employees)
                 .hasPoint(0L)
                 .isBlackConsumer(false)
@@ -60,6 +60,10 @@ public class PaymentTest {
         this.customers[3] = new Customer.Builder("bbubbush", "sh", CustomerType.Normal)
                 .hasPoint(0L)
                 .isBlackConsumer(true)
+                .builder();
+        this.customers[4] = new Customer.Builder("wonrack", "wr", CustomerType.CanNotOrder)
+                .hasPoint(3000L)
+                .isBlackConsumer(false)
                 .builder();
 
         // 주문서 정보

@@ -93,7 +93,8 @@ public class Customer {
      * Date: 2020/05/29
      * Info:
      *  직원 - 포인트가 없으면 주문불가
-     *  일반고객 - 블랙컨슈머이면 사용불가
+     *  일반고객 - 블랙컨슈머이면 주문불가
+     *  거래거절고객 - 그냥 주문불가
      */
     public boolean checkCustomerStatus() {
         if ( this.userType.equals(CustomerType.Employees) ) {
@@ -101,6 +102,9 @@ public class Customer {
         }
         else if ( this.userType.equals(CustomerType.Normal) ) {
             if ( this.isBlackConsumerFlg() ) return false;
+        }
+        else if ( this.userType.equals(CustomerType.CanNotOrder) ) {
+            return false;
         }
         return true;
     }
