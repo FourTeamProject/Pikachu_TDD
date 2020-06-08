@@ -15,16 +15,39 @@ public class CustomerTest {
 
     @Before
     public void setUp() {
-        customers.add(new Customer("mike6321", "jw", 1, 2000, false));
-        customers.add(new Customer("imesung", "hs", 0, 10000, false));
-        customers.add(new Customer("dynee313", "dy", 0, 0, false));
-        customers.add(new Customer("leetsh", "sh", 2, 0, true));
+        customers.add(new Customer.Builder("mike6321", "junwoo")
+                .customerGubun("1")
+                .point(2000)
+                .blackConsumerFlg(false)
+                .build());
+
+        customers.add(new Customer.Builder("imesung", "hyesung")
+                .customerGubun("0")
+                .point(1000)
+                .blackConsumerFlg(false)
+                .build());
+
+        customers.add(new Customer.Builder("bbubbush", "sanghoon")
+                .customerGubun("0")
+                .point(0)
+                .blackConsumerFlg(false)
+                .build());
+
+        customers.add(new Customer.Builder("sinsa", "yujin")
+                .customerGubun("2")
+                .point(0)
+                .blackConsumerFlg(true)
+                .build());
     }
 
     @Test
     public void 기본객체_생성확인() {
         //given
-        Customer customer = new Customer("mesung", "Hye Sung", 1, 3000, false);
+        Customer customer = new Customer.Builder("mesung", "hyesung")
+                .customerGubun("0")
+                .point(1000)
+                .blackConsumerFlg(false)
+                .build();
 
         //when
 
@@ -32,8 +55,8 @@ public class CustomerTest {
         assertNotNull(customer);
         assertThat(customer.getUserId(), is(notNullValue()));
         assertThat(customer.getUserId(), is(equalTo("mesung")));
-        assertThat(customer.getPoint(), is(equalTo(3000L)));
-        assertThat(customer.getUserName(), is(equalTo("Hye Sung")));
+        assertThat(customer.getPoint(), is(equalTo(1000L)));
+        assertThat(customer.getUserName(), is(equalTo("hyesung")));
         assertFalse(customer.isBlackConsumerFlg());
 
     }
@@ -45,7 +68,7 @@ public class CustomerTest {
 
         //when
         for(int i = 0; i < customers.size(); i++) {
-            custChkGubuns[i] = customers.get(i).chkCustGubunInTDD();
+            custChkGubuns[i] = customers.get(i).chkCustGubun();
         }
 
         //then
@@ -56,10 +79,10 @@ public class CustomerTest {
         assertFalse(custChkGubuns[3]);
 
         //setUp 활용
-        assertTrue(this.customers.get(0).chkCustGubunInTDD());
-        assertTrue(this.customers.get(1).chkCustGubunInTDD());
-        assertTrue(this.customers.get(2).chkCustGubunInTDD());
-        assertFalse(this.customers.get(3).chkCustGubunInTDD());
+        assertTrue(this.customers.get(0).chkCustGubun());
+        assertTrue(this.customers.get(1).chkCustGubun());
+        assertTrue(this.customers.get(2).chkCustGubun());
+        assertFalse(this.customers.get(3).chkCustGubun());
 
     }
 }
