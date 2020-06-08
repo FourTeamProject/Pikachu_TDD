@@ -70,10 +70,6 @@ public class Customer {
         return blackConsumerFlg;
     }
 
-    public String getCustomerGubun() {
-        return customerGubun;
-    }
-
     //TDD
     public boolean chkCustGubun() {
         if(this.customerGubun.equals("0") || this.customerGubun.equals("1")) {
