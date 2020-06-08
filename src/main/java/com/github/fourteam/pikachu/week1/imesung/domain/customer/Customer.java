@@ -1,84 +1,57 @@
 package com.github.fourteam.pikachu.week1.imesung.domain.customer;
 
-import com.github.fourteam.pikachu.week1.imesung.domain.login.Login;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Customer {
     private static Logger logger = LoggerFactory.getLogger(Customer.class);
 
-    private final String userId;		//ID
-    private final String userName;		//name
-    private final SuperCustomer customerGubun;  //고객 상태
-    private final long point;			// 보유포인트
-    private final boolean blackConsumerFlg;	//거래거절 고객 여부
+    private String userId;		//ID
+    private String userName;		//name
+    private String customerGubun;  //고객 상태
+    private long point;			// 보유포인트
+    private boolean blackConsumerFlg;	//거래거절 고객 여부
 
-    private final CustomerFactory customerFactory = new CustomerFactory();  //고객 상태
 
-    public Customer(String userId, String userName, int gubun, long point, boolean blackConsumerFlg) {
-        this.userId = userId;
-        this.userName = userName;
-        this.point = point;
-        this.blackConsumerFlg = blackConsumerFlg;
+    public static class Builder {
+        private final String userId;		//ID
+        private final String userName;		//name
+        private String customerGubun = "0";  //고객 상태
+        private long point = 0L;			// 보유포인트
+        private boolean blackConsumerFlg = true;	//거래거절 고객 여부
 
-        //로그인 여부 확인
-        Login login = Login.getInstance();
-        login.loginYn(this);
-
-        //팩토리 메소드 패턴으로 고객 종류에 따른 고객 생성
-        this.customerGubun = customerFactory.createCustomer(gubun);
-    }
-
-    //고객 주문 가능 여부 확인
-    public boolean chkCustStatus() {
-        if(this.customerGubun.custGubun() == 0) {
-            if(this.point == 0) {
-                logger.info("해당 고객 주문 불가합니다.");
-                return false;
-            }
-        } else if(this.customerGubun.custGubun() == 1) {
-            if(this.blackConsumerFlg) {
-                logger.info("해당 고객 주문 불가합니다.");
-                return false;
-            }
-        } else if(this.customerGubun.custGubun() == 2) {
-            logger.info("해당 고객 주문 불가합니다.");
-            return false;
+        public Builder(String userId, String userName) {
+            this.userId = userId;
+            this.userName = userName;
         }
-        logger.info("해당 고객 주문 가능합니다.");
-        return true;
-    }
 
-    public boolean chkCustGubun(String giftStCd) {
-        if(giftStCd.equals("false") && this.customerGubun.custGubun() == 1) {
-            logger.info("일반 고객으로 인해 사은품 재고 없어 주문 불가");
-            return false;
-        } else if(giftStCd.equals("true") && this.customerGubun.custGubun() == 0) {
-            logger.info("임직원 고객으로 인해 사은품 재고 있어 주문 불가");
-            return false;
+        public Builder customerGubun(String customerGubun) {
+            this.customerGubun = customerGubun;
+            return this;
         }
-        return true;
-    }
 
-    public boolean chkPoint() {
-        if(this.point < 3000) {
-            logger.info("포인트 부족");
-            return false;
+        public Builder point(long point) {
+            this.point = point;
+            return this;
         }
-        return true;
-    }
 
-    public void custLoginSuccess() {
-        logger.info(this.userId + " 로그인이 완료되었습니다.");
-    }
-
-    //TDD
-    public boolean chkCustGubunInTDD() {
-        if(this.customerGubun.custGubun() == 0 || this.customerGubun.custGubun() == 1) {
-            return true;
-        } else {
-            return false;
+        public Builder blackConsumerFlg(boolean blackConsumerFlg) {
+            this.blackConsumerFlg = blackConsumerFlg;
+            return this;
         }
+
+        public Customer build() {
+            return new Customer(this);
+        }
+    }
+
+
+    public Customer(Builder builder) {
+        this.userId = builder.userId;
+        this.userName = builder.userName;
+        this.point = builder.point;
+        this.customerGubun = builder.customerGubun;
+        this.blackConsumerFlg = builder.blackConsumerFlg;
     }
 
     public String getUserId() {
@@ -95,5 +68,19 @@ public class Customer {
 
     public boolean isBlackConsumerFlg() {
         return blackConsumerFlg;
+    }
+
+    public String getCustomerGubun() {
+        return customerGubun;
+    }
+
+    //TDD
+    public boolean chkCustGubun() {
+        if(this.customerGubun.equals("0") || this.customerGubun.equals("1")) {
+            logger.info(this.userName + "님은 저희 서비스를 이용할 수 있습니다.");
+            return true;
+        } else {
+            return false;
+        }
     }
 }
