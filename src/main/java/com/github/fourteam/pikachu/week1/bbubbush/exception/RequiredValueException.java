@@ -2,7 +2,9 @@ package com.github.fourteam.pikachu.week1.bbubbush.exception;
 
 import java.io.IOException;
 
-public class RequiredValueException extends RuntimeException {
+public class
+
+RequiredValueException extends RuntimeException {
     public RequiredValueException (String errorMsg) {
         super(errorMsg);
     }
