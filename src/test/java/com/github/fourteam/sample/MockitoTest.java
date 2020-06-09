@@ -12,11 +12,11 @@ import static org.mockito.Mockito.*;
 
 public class MockitoTest {
 
-    private Map<String, String> mockMap = mock(HashMap.class);
+    private Map<String, String> mockMap;
 
     @Before
     public void setUp() {
-
+        mockMap = mock(HashMap.class);
     }
 
     /**
@@ -63,8 +63,7 @@ public class MockitoTest {
         when(mockMap.get(anyString())).thenReturn("bbubbush");
         when(mockMap.get(eq("age"))).thenReturn("31");
         when(mockMap.containsKey(anyString())).thenCallRealMethod();
-
-
+        
         assertThat(mockMap.get("userId"), is(equalTo("bbubbush")));
         assertThat(mockMap.get("userName"), is(equalTo("bbubbush")));
         assertThat(mockMap.get("age"), is(equalTo("31")));
