@@ -3,14 +3,18 @@ package com.github.fourteam.pikachu.week1.bbubbush.domain.customer.impl;
 import com.github.fourteam.pikachu.week1.bbubbush.domain.customer.Employee;
 import com.github.fourteam.pikachu.week1.bbubbush.domain.product.Product;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 
 import java.util.List;
 
-@Data
-@Builder
+@Getter
 public class SupplierEmployee implements Employee {
     private List<Product> supplyProducts;
+
+    @Builder
+    public SupplierEmployee(List<Product> supplyProducts) {
+        this.supplyProducts = supplyProducts;
+    }
 
     /**
      * Name: 주문가능상태 확인

@@ -1,6 +1,7 @@
 package com.github.fourteam.pikachu.week1.bbubbush.domain.customer.impl;
 
 import com.github.fourteam.pikachu.week1.bbubbush.domain.customer.Customer;
+import lombok.Builder;
 
 /**
  * Name: 거래거절 고객
@@ -9,6 +10,11 @@ import com.github.fourteam.pikachu.week1.bbubbush.domain.customer.Customer;
  *
  */
 public class ImpossibleOrderCustomer implements Customer {
+
+    @Builder
+    public ImpossibleOrderCustomer(){
+
+    }
 
     @Override
     public boolean checkCustomerStatus() {

@@ -1,8 +1,14 @@
 package com.github.fourteam.pikachu.week1.bbubbush.domain.customer.impl;
 
 import com.github.fourteam.pikachu.week1.bbubbush.domain.customer.Customer;
+import lombok.Builder;
 
 public class NormalCustomer implements Customer {
+
+    @Builder
+    public NormalCustomer() {
+
+    }
 
     /**
      * Name: 주문가능상태 확인

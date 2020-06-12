@@ -2,15 +2,20 @@ package com.github.fourteam.pikachu.week1.bbubbush.domain.customer.impl;
 
 import com.github.fourteam.pikachu.week1.bbubbush.domain.customer.Employee;
 import lombok.Builder;
-import lombok.Data;
-
+import lombok.Getter;
 import java.time.LocalDate;
 
-@Data
-@Builder
+@Getter
 public class ShopEmployee implements Employee {
     private Long point;
     private LocalDate retireDate;
+
+    @Builder
+    public ShopEmployee(Long point, LocalDate retireDate) {
+        this.point = point;
+        this.retireDate = retireDate;
+    }
+
     /**
      * Name: 주문가능상태 확인
      * Date: 2020/06/12
