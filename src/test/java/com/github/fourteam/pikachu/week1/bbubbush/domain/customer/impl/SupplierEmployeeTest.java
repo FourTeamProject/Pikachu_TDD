@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
@@ -51,6 +52,7 @@ public class SupplierEmployeeTest {
     public void mock객체_테스트() {
         when(mockProducts.size()).thenReturn(2);
 
+//        when(mockSupplierEmployee.checkCustomerStatus()).thenReturn(Boolean.FALSE);
         assertFalse(mockSupplierEmployee.checkCustomerStatus());
     }
 
