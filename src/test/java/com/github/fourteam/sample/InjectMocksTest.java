@@ -1,21 +1,20 @@
 package com.github.fourteam.sample;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
-
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.*;
 
 
 /**
  * Name: Mock 객체 주입에 대한 학습 테스트
  * Date: 2020/06/13
  * Info:
- *  [2st week]
+ *  [2nd week]
  *  객체가 참조하는 다른 객체를 Mocking 하는 방법을 학습한다.
  */
 public class InjectMocksTest {

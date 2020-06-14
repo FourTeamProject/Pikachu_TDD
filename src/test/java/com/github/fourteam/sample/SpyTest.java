@@ -1,22 +1,22 @@
 package com.github.fourteam.sample;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.when;
 
 /**
  * Name: Spy 객체 학습 테스트
  * Date: 2020/06/13
  * Info:
- *  [2st week]
+ *  [2nd week]
  *  Spy 객체는 Real Object의 특정 행동만 Mocking 할 수 있다.
  *  지정하지 않은 행동에 대해서는 실제 객체처럼 행동한다.
  */

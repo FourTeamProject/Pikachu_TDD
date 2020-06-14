@@ -22,19 +22,13 @@ import static org.mockito.Mockito.*;
  * Name: 애노테이션 목 객체 학습테스트
  * Date: 2020/06/13
  * Info:
- *  [3st week]
+ *  [3rd week]
  * @Mock, @InjectMocks, @Spy 애노테이션 사용법을 학습한다.
  */
 public class AnnotationMockTest {
-
-
-    @Mock
-    private List<String> mockProduct;
-    @Spy
-    @InjectMocks
-    private OnlineShop mockObject;      // @InjectMocks은 @Mock이나 @Spy 객체를 자동으로 주입받는다.
-    @Spy
-    private OnlineShop spyObject;
+    @Mock private List<String> mockProduct;
+    @Spy @InjectMocks private OnlineShop mockObject;      // @InjectMocks은 @Mock이나 @Spy 객체를 자동으로 주입받는다.
+    @Spy private OnlineShop spyObject;
 
     @Before
     public void setUp() {
@@ -63,16 +57,16 @@ public class AnnotationMockTest {
     }
 
     @Test
-    public void mock() {
+    public void mock_객체_사() {
         doNothing().when(mockObject).setProducs(anyList());
 
         List<String> products = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             products.add("bbubbush" + i);
         }
-        mockObject.setProducs(products);      // 상품을 주입하지만 아무런 행동이 일어나지 않는다.
+        mockObject.setProducs(products);      // 상품을 주입 하지만 아무런 행동이 일어나지 않는다.
 
-        assertFalse(mockObject.canThisShopOpen());   // mock 객체처럼 when()으로 정의된 행동으로 동작
+        assertFalse(mockObject.canThisShopOpen());   // when()으로 정의된 행동으로 동작
     }
 
 }
