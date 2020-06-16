@@ -1,22 +1,19 @@
 package com.github.fourteam.pikachu.week1.bbubbush.domain.customer.impl;
 
 import com.github.fourteam.pikachu.week1.bbubbush.domain.customer.Employee;
-import com.github.fourteam.pikachu.week1.bbubbush.domain.product.NullProduct;
+import com.github.fourteam.pikachu.week1.bbubbush.domain.product.impl.NullProduct;
 import com.github.fourteam.pikachu.week1.bbubbush.domain.product.Product;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 import java.util.LinkedList;
 
 import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)

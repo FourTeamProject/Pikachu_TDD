@@ -1,5 +1,7 @@
 package com.github.fourteam.pikachu.week1.bbubbush.domain.product;
 
-public interface GiftProduct {
-    boolean checkGift();
+import static org.junit.Assert.*;
+
+public class SalesGiftTest {
+
 }
