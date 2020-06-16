@@ -29,3 +29,6 @@ hs_err_pid*
 .idea/
 .idea/libraries/
 target/
+
+### MacOS ###
+*.DS_Store
