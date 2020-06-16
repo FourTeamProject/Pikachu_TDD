@@ -50,7 +50,7 @@ public class Customer {
         }
     }
 
-    private Customer(Builder builder) {
+    public Customer(Builder builder) {
         this.userId = builder.userId;
         this.userName = builder.userName;
         this.userType = builder.userType;

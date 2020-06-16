@@ -7,16 +7,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
-public class MockitoTest {
+/**
+ * Name: 기본 Mock 객체 학습테스트
+ * Date: 2020/06/13
+ * Info:
+ *  [1st week]
+ *  가장 간단한 형태의 Mock 객체 사용법을 학습한다.
+ */
+public class BasicMockitoTest {
 
-    private Map<String, String> mockMap = mock(HashMap.class);
+    private Map<String, String> mockMap;
 
     @Before
     public void setUp() {
-
+        mockMap = mock(HashMap.class);
     }
 
     /**
@@ -63,8 +70,7 @@ public class MockitoTest {
         when(mockMap.get(anyString())).thenReturn("bbubbush");
         when(mockMap.get(eq("age"))).thenReturn("31");
         when(mockMap.containsKey(anyString())).thenCallRealMethod();
-
-
+        
         assertThat(mockMap.get("userId"), is(equalTo("bbubbush")));
         assertThat(mockMap.get("userName"), is(equalTo("bbubbush")));
         assertThat(mockMap.get("age"), is(equalTo("31")));
