@@ -57,7 +57,8 @@ public class AnnotationMockTest {
     }
 
     @Test
-    public void mock_객체_사() {
+    public void mock_객체_사용
+            () {
         doNothing().when(mockObject).setProducs(anyList());
 
         List<String> products = new ArrayList<>();
