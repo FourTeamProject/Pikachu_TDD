@@ -21,4 +21,5 @@ public class Customer {
     private Role role;
     private Integer point;
 
+
 }
