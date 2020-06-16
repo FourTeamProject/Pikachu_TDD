@@ -1,6 +1,7 @@
 package com.github.fourteam.pikachu.week1.imesung;
 
 import com.github.fourteam.pikachu.week1.imesung.domain.customer.Customer;
+import com.github.fourteam.pikachu.week1.imesung.domain.customer.CustomerType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -84,5 +85,16 @@ public class CustomerTest {
         assertTrue(this.customers.get(2).chkCustGubun());
         assertFalse(this.customers.get(3).chkCustGubun());
 
+    }
+
+    @Test
+    public void 협력사생성_확인() {
+        customers.add(new Customer.Builder("partner", "partner")
+                .customerGubun("3")
+                .point(0)
+                .blackConsumerFlg(true)
+                .customerType(CustomerType.PARTNER)
+                .supId("123")
+                .build());
     }
 }
