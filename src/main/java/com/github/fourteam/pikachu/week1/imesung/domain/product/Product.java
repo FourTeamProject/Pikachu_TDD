@@ -7,4 +7,6 @@ public abstract class Product {
 		return gift.checkGift();
 	}
 	public abstract boolean checkProduct();
+
+
 }
