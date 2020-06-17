@@ -1,4 +1,4 @@
-package com.github.fourteam.pikachu.week1.junwoo;
+package com.github.fourteam.pikachu.week1.junwoo.impl;
 
 
 import com.github.fourteam.pikachu.week1.junwoo.dto.cutomer.Customer;
@@ -40,6 +40,11 @@ public class ExecutivesCustomerAuthorityCheckImplTest {
         for (Customer customer : customers) {
             assertNotNull(customer);
             assertTrue(customer.getUserId()+" 님 포인트가 0이므로 주문서에 접근할 수 없습니다.", customer.getPoint() != 0);
+            /*
+            * cusstomer.sendMessage(객체);
+            * Authority.check();
+            *
+            * */
         }
 
 
