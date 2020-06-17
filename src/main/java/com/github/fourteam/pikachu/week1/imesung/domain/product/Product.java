@@ -6,7 +6,5 @@ public abstract class Product {
 	public boolean checkGift() {
 		return gift.checkGift();
 	}
-	
 	public abstract boolean checkProduct();
 }
-""
