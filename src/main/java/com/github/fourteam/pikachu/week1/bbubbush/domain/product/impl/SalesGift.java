@@ -15,8 +15,7 @@ public class SalesGift implements GiftProduct {
         this.stock = stock;
     }
 
-    @Override
-    public boolean checkGift() {
-        return stock > 0L;
-    }
+
+
+
 }

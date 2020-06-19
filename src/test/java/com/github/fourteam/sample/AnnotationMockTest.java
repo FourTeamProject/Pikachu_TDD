@@ -57,18 +57,22 @@ public class AnnotationMockTest {
     }
 
     @Test
-    public void mock_객체_사용
-            () {
+    public void mock_객체_사용() {
+        // given
         doNothing().when(mockObject).setProducs(anyList());
-
         List<String> products = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             products.add("bbubbush" + i);
         }
+
+        // when
         mockObject.setProducs(products);      // 상품을 주입 하지만 아무런 행동이 일어나지 않는다.
 
+        // then
         assertFalse(mockObject.canThisShopOpen());   // when()으로 정의된 행동으로 동작
     }
+
+
 
 }
 

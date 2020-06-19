@@ -30,10 +30,10 @@ public class SalesProductTest {
         boolean guessTrue = product.checkProduct();
         when(salesGift.getStock()).thenReturn(10L);
 
-        boolean guessFalse = product.getGiftProduct().checkGift();
+        long giftProductStock = product.getGiftProduct().getStock();
 
         assertTrue(guessTrue);
-        assertFalse(guessFalse);
-        verify(salesGift).checkGift();
+        assertEquals(giftProductStock, 10L);
+        verify(salesGift).getStock();
     }
 }
