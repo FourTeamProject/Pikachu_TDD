@@ -15,6 +15,7 @@ public class MockHttpTest {
         // given
         SampleServlet sampleServlet = new SampleServlet();
         MockHttpServletRequest req = new MockHttpServletRequest();
+        req.addParameter("name", "bbubbush");
         MockHttpServletResponse res = new MockHttpServletResponse();
 
         // when

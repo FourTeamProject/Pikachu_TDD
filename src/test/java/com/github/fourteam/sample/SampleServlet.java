@@ -1,6 +1,7 @@
 package com.github.fourteam.sample;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +21,9 @@ public class SampleServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.debug(this.getClass().toString() + ".doGet()... Run");
+        if ( StringUtils.isEmpty(req.getPart("name"))) {
+            log.debug("Hello " + req.getParameter("name"));
+        }
         super.doGet(req, resp);
     }
 
