@@ -28,7 +28,7 @@ public class GiftStockImplTest {
     public void setUp() {
         gift = new Gift(12345L,5);
 
-        given(gift.getGiftId()).willReturn(true);
+        //given(gift.getGiftId()).willReturn(true);
     }
 
     @Test
