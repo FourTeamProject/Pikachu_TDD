@@ -1,16 +1,18 @@
-package pikachu.domain.customer;
+package com.github.fourteam.pikachu.week1.imesung.domain.customer;
 
-public class ExecutivesCust implements Customer{
+import lombok.Builder;
+import lombok.Getter;
 
-	private Long point;
+public class ExecutivesCust extends Customer {
+
 	private String retireDate;
 	
 	@Override
 	public boolean chkCustomerGubun() {
-		if(point == 0L || retireDate == null) {
+		if(super.getPoint() == 0L || retireDate == null) {
 			return false;
 		}
 		return true;
 	}
-	
+
 }
