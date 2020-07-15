@@ -1,4 +1,6 @@
-# 피-까 TDD
+# Pikachu_TDD
+
+<img src="https://user-images.githubusercontent.com/33277588/87496025-afc78b80-c68d-11ea-82aa-b1ee4f90a1c8.png" width="300" height="300">
 
 ### 학습 목표
 1. TDD의 개념을 이해하고 코드작성을 통해 장단점을 파악한다.
